@@ -8,8 +8,10 @@ Eine Website wie diese sollte jedoch immer auf mindestens drei Bildschirmgröße
 - Tablets/iPads
 - Smartphones
 
-Vielleicht ist das Hamburger-Menü nur für die letzten beiden Gerätetypen vorgesehen (??)
+Vielleicht ist das Hamburger-Menü nur für die letzten beiden Gerätetypen vorgesehen (??). Jedenfalls macht das Hamburger-Menü gerade nichts mehr als Deko.
 
-Ich habe keine Media Queries im CSS eingefügt, aus Zeitgründen.
+Aus Zeit Gründe habe ich keine weitere Media Queries im CSS eingefügt, außer die Einstellungen, die die Anzahl von Zellen pro Zeile regieren. Selbst das ist relativ primitiv.
 
-Nur eines der vielen Probleme, die ich in der verfügbaren Zeit nicht richtig angehen konnte!
+Auch die Struktur der Daten in der .json-Datei ist ziemlich primitiv.
+
+Das sind nur ein paar der vielen Punkte, die ich in der verfügbaren Zeit leider nicht angehen konnte!
