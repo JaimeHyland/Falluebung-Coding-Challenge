@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Good Food – Library</title>
   <link rel="stylesheet" href="styles.css">
 </head>
@@ -38,7 +39,9 @@
 
   <main>
     <h1>Library</h1>
-    <p>Browse articles, recipes, and drink guides here.</p>
+    <div class="grid-container" id="library-grid">
+
+    </div>
   </main>
 
   <footer>
@@ -46,5 +49,26 @@
     <div>© 2026 Good Food Magazine</div>
     <a href="gdpr.html" class="gdpr-button">Data & Privacy Settings</a>
   </footer>
+
+  <script>
+    fetch('library.json')
+      .then(response => response.json())
+      .then(data => {
+        const grid = document.getElementById('library-grid');
+        data.forEach(item => {
+          const cell = document.createElement('div');
+          cell.className = 'cell';
+          cell.innerHTML = `
+            <img src="${item.image}" alt="${item.title}">
+            <div class="title">${item.title}, ${item.runtime}</div>
+            <div class="buttons">
+              <button>Listen now</button>
+              <button>&#x2601; ↓</button>
+            </div>
+          `;
+          grid.appendChild(cell);
+        });
+      });
+  </script>
 </body>
 </html>

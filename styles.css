@@ -96,3 +96,62 @@ footer a {
   font-family: inherit;
   cursor: pointer;
 }
+
+.cell {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: #fafafa;
+}
+
+.cell img {
+  width: 100%;
+  aspect-ratio: 1/1;
+  object-fit: cover;
+  margin-bottom: 8px;
+}
+
+.cell .title {
+  font-weight: 500;
+  margin-bottom: 4px;
+}
+
+.cell .buttons {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.cell button {
+  padding: 6px 12px;
+  border: 1px solid #000;
+  background: none;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+/* Mobile-first: default 2 columns */
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  padding: 24px;
+}
+
+/* Tablet: 3 columns */
+@media (min-width: 601px) and (max-width: 1024px) {
+  .grid-container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Desktop: 4 columns */
+@media (min-width: 1025px) {
+  .grid-container {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
