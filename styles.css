@@ -97,6 +97,31 @@ footer a {
   cursor: pointer;
 }
 
+.filter-bar {
+  display: flex;
+  justify-content: space-between;
+  width: 75%;
+  margin: 32px auto;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.filter-item {
+  flex: 1;
+  text-align: center;
+  padding: 12px 0;
+  cursor: pointer;
+  font-weight: 500;
+  background: #f5f5f5;
+  transition: background 0.2s;
+}
+
+.filter-item:hover,
+.filter-item.active {
+  background: #ddd;
+}
+
 .cell {
   border: 1px solid #ddd;
   padding: 8px;

@@ -41,7 +41,12 @@
     <div class="hero-container">
       <img src="/public/library-2048x849.webp" alt="Library Hero Image" class="hero-image">
     </div>
-    <h1>Library</h1>
+    <div class="filter-bar">
+      <div class="filter-item" data-filter="issues">Issues</div>
+      <div class="filter-item" data-filter="my">My issues</div>
+      <div class="filter-item" data-filter="specials">Specials</div>
+      <div class="filter-item" data-filter="audio">Audio</div>
+    </div>
     <div class="grid-container" id="library-grid">
 
     </div>
@@ -53,25 +58,75 @@
     <a href="gdpr.html" class="gdpr-button">Data & Privacy Settings</a>
   </footer>
 
-  <script>
-    fetch('library.json')
-      .then(response => response.json())
-      .then(data => {
-        const grid = document.getElementById('library-grid');
-        data.forEach(item => {
-          const cell = document.createElement('div');
-          cell.className = 'cell';
-          cell.innerHTML = `
-            <img src="${item.image}" alt="${item.title}">
-            <div class="title">${item.title}, ${item.runtime}</div>
-            <div class="buttons">
-              <button>Listen now</button>
-              <button>&#x2601; ↓</button>
-            </div>
-          `;
-          grid.appendChild(cell);
-        });
-      });
-  </script>
+<script>
+  const grid = document.getElementById('library-grid');
+  const filterItems = document.querySelectorAll('.filter-item');
+
+  let allItems = [];
+
+  fetch('library.json')
+    .then(response => response.json())
+    .then(data => {
+      allItems = data;
+      renderItems(allItems); // Show all by default
+    });
+
+  function renderItems(items) {
+    grid.innerHTML = ''; // Clear grid
+    items.forEach(item => {
+      const cell = document.createElement('div');
+      cell.className = 'cell';
+      
+      if(item.audio) {
+        cell.innerHTML = `
+          <img src="${item.image}" alt="${item.title}">
+          <div class="title">${item.title}, ${item.runtime}</div>
+          <div class="buttons">
+            <button>Listen now</button>
+            <button>&#x2601; ↓</button>
+          </div>
+        `;
+      } else {
+        cell.innerHTML = `
+          <img src="${item.image}" alt="${item.title}">
+          <div class="title">${item.title}</div>
+        `;
+      }
+
+      grid.appendChild(cell);
+    });
+  }
+
+  filterItems.forEach(filter => {
+    filter.addEventListener('click', () => {
+      // Remove active class from all
+      filterItems.forEach(f => f.classList.remove('active'));
+      // Add active class to clicked
+      filter.classList.add('active');
+
+      const type = filter.dataset.filter;
+      let filtered = [];
+
+      switch(type) {
+        case 'issues':
+          filtered = allItems.filter(item => !item.audio);
+          break;
+        case 'my':
+          filtered = allItems.filter(item => item.my);
+          break;
+        case 'specials':
+          filtered = allItems.filter(item => item.special);
+          break;
+        case 'audio':
+          filtered = allItems.filter(item => item.audio);
+          break;
+        default:
+          filtered = allItems;
+      }
+
+      renderItems(filtered);
+    });
+  });
+</script>
 </body>
 </html>
