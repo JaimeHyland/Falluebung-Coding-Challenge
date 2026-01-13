@@ -70,7 +70,7 @@ nav a, nav span {
 }
 
 main {
-  padding: 24px;
+  padding: 0px;
   flex: 1 0 auto;
 }
 
@@ -134,7 +134,22 @@ footer a {
   font-family: inherit;
 }
 
-/* Mobile-first: default 2 columns */
+.hero-container {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.hero-image {
+  width: 100%;
+  height: auto;
+  display: block;
+  margin: 0;
+  padding: 0;
+  border-radius: 0;
+  object-fit: cover;
+}
+
 .grid-container {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
