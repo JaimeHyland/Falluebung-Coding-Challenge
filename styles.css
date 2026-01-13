@@ -1,0 +1,98 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: system-ui, sans-serif;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+header {
+  display: grid;
+  grid-template-columns: 40px 1fr 40px;
+  align-items: center;
+  padding: 12px 16px;
+  border-bottom: 1px solid #ddd;
+}
+
+.center-title {
+  text-align: center;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+}
+
+nav {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  padding: 12px 0;
+  border-bottom: 1px solid #eee;
+  position: relative;
+}
+
+nav > div {
+  position: relative;
+}
+
+nav a, nav span {
+  text-decoration: none;
+  color: black;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.issue-menu {
+  display: none;
+  position: absolute;
+  top: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: white;
+  border: 1px solid #ddd;
+  padding: 8px 0;
+  min-width: 160px;
+  text-align: center;
+  z-index: 10;
+}
+
+.issue-menu a {
+  display: block;
+  padding: 6px 12px;
+  white-space: nowrap;
+}
+
+.issue:hover .issue-menu {
+  display: block;
+}
+
+main {
+  padding: 24px;
+  flex: 1 0 auto;
+}
+
+footer {
+  border-top: 1px solid #ddd;
+  padding: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.9rem;
+  flex-shrink: 0;
+}
+
+footer a {
+  text-decoration: none;
+  color: black;
+}
+
+.gdpr-button {
+  padding: 6px 12px;
+  border: 1px solid #000;
+  background: none;
+  font-family: inherit;
+  cursor: pointer;
+}
